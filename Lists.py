@@ -1,16 +1,37 @@
-if _name_ == '_main_':
+if __name__ == '__main__':
     N = int(input())
+
     l = []
+    
     for i in range(N):
-        s = input().split()
-        check = s[0]
-        other = s[1:]
-        if check == 'print':
+
+        inp = input()
+        
+        if(inp.find("insert")>=0):
+            a = inp[7:]
+            x,y = a.split()
+            x = int(x)
+            y = int(y)
+            l.insert(x,y)
+
+        elif(inp.find("remove")>=0):
+            b = inp[7:]
+            b = int(b)
+            l.remove(b)
+
+        elif(inp.find("print")>=0):
             print(l)
-        else:
-            if len(other) == 1:
-                eval("l."+check+"("+other[0]+")")
-            elif len(other) == 2:
-                eval("l."+check+"("+other[0]+","+other[1]+")")
-            else:
-                eval("l."+check+"()")
+
+        elif(inp.find("append")>=0):
+            c = inp[7:]
+            c = int(c)
+            l.append(c)
+
+        elif(inp.find("sort")>=0):
+            l.sort()
+
+        elif(inp.find("pop")>=0):
+            l.pop(-1)
+        
+        elif(inp.find("reverse")>=0):
+            l.reverse()
